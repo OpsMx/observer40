@@ -7,23 +7,12 @@ deploymentConfigurations:
       enabled: false
       accounts: []
     aws:
-      enabled: true
-      accounts:
-      - name: "AWSqatestzppsb"
-        requiredGroupMembership: []
-        providerVersion: "v1"
-        permissions: {}
-        accountId: "732813442182"
-        assumeRole: "spinEC2Managed"
-        lifecycleHooks: []
-        regions:
-        - name: "us-west-1"
+      enabled: false
+      accounts: []
       bakeryDefaults:
         baseImages: []
       defaultKeyPairTemplate: "{{name}}-keypair"
-      defaultRegions:
-      - name: "us-west-2"
-      - name: "us-west-1"
+      defaultRegions: []
       defaults:
         iamRole: "BaseIAMRole"
     ecs:
