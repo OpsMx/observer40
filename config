@@ -344,6 +344,9 @@ deploymentConfigurations:
       enabled: true
       accounts:
       - name: "opsmxdemo_account"
+      - name: "qatestbkgxc"
+        username: "girichinna27"
+        token: "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"
     gitlab:
       enabled: false
       accounts: []
