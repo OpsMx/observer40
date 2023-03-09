@@ -1,0 +1,82 @@
+#imageCredentials:
+#  repoUrl: https://quay.io/
+  # Update this is using a private repo such as ACR, ECR, GCR, JFrog, etc.
+  #  registry: docker.io/opsmx11
+
+## Declare all the global variables under this
+## Global variables can be accessed across all the charts including sub-charts
+global:
+   ## Valid admin details for ISD authorization
+  saporgate:
+    config:
+      username: admin       #Name of the valid user in your service provider
+      adminGroups: admin    #Name of the valid admin group in your service provider
+      password: saporadmin #password for the saporgate
+
+  # Spinnaker Deck URL configuration; url overwhich spinnaker deck will be accessed
+  ssl:
+    enabled: true
+
+  # If cert-manager is installed, TLS secrets will created automatically, as an 'Issuer' will be created
+  # Else, the TLS secrets will need to created manually
+  certManager:
+    installed: true
+
+  customCerts:
+    enabled: false        # Set to true if your organization requires custom TLS certs
+    secretName: oes-cacerts # Please do not change this
+
+  # Common gate for both spin and oes services. Change ONLY if required
+  commonGate:
+    enabled: true
+    spinnakerRBAC: false  # Set to true if RBAC is enabled in Spinnaker
+    spinnakerKayanta: false
+
+  ## Set to true to expose oes-ui, oes-gate services over ingress
+  createIngress: true
+
+  ## OES-UI url configuration
+  oesUI:
+    host: obs40.aoa.oes.opsmx.org
+
+  ldap:
+    enabled: true
+    groupRoleAttributes: cn
+    groupSearchBase: ou=groups,dc=opsmx,dc=com
+    groupSearchFilter: member={0}
+    managerDn: cn=manager,dc=opsmx,dc=com
+    managerPassword: manager123
+    url: ldap://nonprd-ldap.opsmx.com
+    userDnPattern: uid={0},ou=users,dc=opsmx,dc=com
+
+  gitea:
+    enabled: false
+    admin:
+      existingSecret: gitea-secret
+      username: saiteja
+      password: sai123
+      email: "opsmx@local.domain"
+
+spinnaker:
+  gitopsHalyard:
+    pipelinePromotion:
+      baseUrl: github.com
+      branch: master
+      enabled: true
+      organization: OpsMx
+      repository: observer40
+      rootFolder: pipeline/
+      token: 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
+      type: git
+      username: girichinna27
+    repo:
+      baseUrlHostName: github.com
+      dynAccntConfigPath: /
+      dynamicAccRepository: observer40
+      halConfigPath: /
+      organization: OpsMx
+      repository: observer40
+      token: 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
+      type: git
+      usermailid: giri@opsmx.io
+      username: girichinna27
